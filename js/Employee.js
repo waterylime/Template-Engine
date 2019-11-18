@@ -1,29 +1,29 @@
 
 class Employee {
-    constructor(name, id,email, title ){
+    constructor(name, id,email){
         this.name = name;
         this.id = id;
         this.email = email;
-        this.title = title;
+       
     }
 
     //a method that gets the employee name
-    getName(name) {
+    getName() {
         return this.name;
     }
 
     //a method that gets the employee id
-    getId(id){
+    getId(){
         return this.id;
     }
 
     //a method that gets employy email
-    getEmail(email){
+    getEmail(){
         return this.email;
     }
 
     //a method that checks and returns employee role
-    getRole(title){
+    getRole(){
         return "Employee";
     }
 }

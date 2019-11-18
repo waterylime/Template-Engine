@@ -1,11 +1,12 @@
-const Employee = require("./lib/Employee");
-const Intern = require("./lib/Intern");
-const Engineer = require("./lib/Engineer");
-const Manager = require("./lib/Manager");
+const Employee = require("./js/Employee");
+const Intern = require("./js/Intern");
+const Engineer = require("./js/Engineer");
+const Manager = require("./js/Manager");
 const fs = require("fs");
 const inquirer = require("inquirer");
 const util = require("util");
 const generateHTML = require("./generateHTML");
+const outPutPath = path.resolve(__dirname,'outPut', 'team.html')
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -14,6 +15,7 @@ const writeHTML = function(generateHTML) {
 };
 
 const team = [];
+const idArray = [];
 
 //the main function of the app (and the one that triggers on app launch), this function collects the data on the office manager (the first member to be inputed), it then creates a new Manager instance with the collected information, pushes that instance to the team array, and fires the more function.
 
@@ -53,6 +55,7 @@ const teamMaker = () => {
         "Manager"
       );
       team.push(teamManager);
+      idArray.push(data.id);
       return console.log(team);
     })
     .then(function() {
@@ -95,6 +98,8 @@ const newIntern = () => {
         "Intern"
       );
       team.push(member);
+ 
+      idArray.push(res.id);
     })
     .then(function() {
       more();
@@ -136,6 +141,7 @@ const newEngineer = () => {
         "Engineer"
       );
       team.push(member);
+      idArray.push(res.id);
     })
     .then(function() {
       more();
